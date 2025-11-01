@@ -1,5 +1,5 @@
 import React from "react";
-import usePhoneBookStore from "../stores/usePhoneBookStore";
+import usePhoneBookStore from "../stores/usePhoneBookStore.js";
 
 const ContactList = () => {
   const { phoneBook } = usePhoneBookStore();
