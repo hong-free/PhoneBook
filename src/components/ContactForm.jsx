@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { TextField } from "@mui/material";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import usePhoneBookStore from "../stores/usePhoneBookStore.js";
+import usePhonebookStore from "../stores/usePhonebookStore.js";
 
 const ContactForm = () => {
   const [name, setName] = useState("");
   const [phoneNum, setPhoneNum] = useState("");
-  const { addContact } = usePhoneBookStore();
+  const { addContact } = usePhonebookStore();
 
   const handleAddContact = () => {
     if (!name.trim() || !phoneNum.trim()) return;

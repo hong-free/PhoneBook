@@ -1,7 +1,7 @@
 import React from "react";
 import { create } from "zustand";
 
-const usePhoneBookStore = create((set) => ({
+const usePhonebookStore = create((set) => ({
   phoneBook: [],
   addContact: (name, phoneNum) =>
     set((state) => ({
@@ -9,4 +9,4 @@ const usePhoneBookStore = create((set) => ({
     })),
 }));
 
-export default usePhoneBookStore;
+export default usePhonebookStore;
