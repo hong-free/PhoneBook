@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { TextField } from "@mui/material";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import usePhoneBookStore from "./stores/usePhoneBookStore";
+import usePhoneBookStore from "../stores/usePhoneBookStore";
 
 const ContactForm = () => {
   const [name, setName] = useState("");
