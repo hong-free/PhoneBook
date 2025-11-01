@@ -1,7 +1,7 @@
 import "./App.css";
 import { Grid } from "@mui/material";
-import ContactForm from "./components/ContactForm";
-import ContactList from "./components/ContactList";
+import ContactForm from "./components/ContactForm.jsx";
+import ContactList from "./components/ContactList.jsx";
 
 function App() {
   return (
