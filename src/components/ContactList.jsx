@@ -1,19 +1,31 @@
 import React from "react";
-import usePhonebookStore from "../stores/usePhonebookStore";
+import SearchBox from "./SearchBox";
+import ContactItem from "./ContactItem";
+import { useSelector } from "react-redux";
+import { useState, useEffect } from "react";
 
 const ContactList = () => {
-  const { phoneBook } = usePhonebookStore();
-  console.log(phoneBook);
+  const { contactList, keyword } = useSelector((state) => state);
+  const [filteredList, setFilteredList] = useState([]);
+  useEffect(() => {
+    if (keyword !== "") {
+      const list = contactList.filter((item) => item.name.includes(keyword));
+
+      setFilteredList(list);
+    } else {
+      setFilteredList(contactList);
+    }
+  }, [keyword, contactList]);
   return (
     <div>
-      {phoneBook.map((item) => (
-        <div key={item.id}>
-          <p>{item.name}</p>
-          <p>{item.phoneNum}</p>
-        </div>
-      ))}
+      <SearchBox />
+      <div className="contact-list">
+        num:{filteredList.length}
+        {filteredList.map((item, index) => (
+          <ContactItem item={item} key={index} />
+        ))}
+      </div>
     </div>
   );
 };
-
 export default ContactList;

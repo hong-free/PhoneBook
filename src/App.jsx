@@ -1,20 +1,25 @@
 import "./App.css";
-import { Grid } from "@mui/material";
-import ContactForm from "./components/ContactForm.jsx";
-import ContactList from "./components/ContactList.jsx";
+import "bootstrap/dist/css/bootstrap.min.css";
+import ContactForm from "./components/ContactForm";
+import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import ContactList from "./components/ContactList";
 
 function App() {
   return (
     <div className="App">
-      <h1>연락처 앱</h1>
-      <Grid container spacing={2}>
-        <Grid size={6}>
-          <ContactForm />
-        </Grid>
-        <Grid size={6}>
-          <ContactList />
-        </Grid>
-      </Grid>
+      <h1 className="title">Contact List</h1>
+      <Container>
+        <Row className="row">
+          <Col md={6} lg={8} sm={12}>
+            <ContactForm />
+          </Col>
+        </Row>
+        <Row className="row">
+          <Col md={6} lg={8} sm={12}>
+            <ContactList />
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 }

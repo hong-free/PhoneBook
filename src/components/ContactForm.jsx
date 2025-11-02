@@ -1,38 +1,42 @@
-import React, { useState } from "react";
-import { TextField } from "@mui/material";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import usePhonebookStore from "../stores/usePhonebookStore.js";
+import React from "react";
+import { Form, Button } from "react-bootstrap";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
 
 const ContactForm = () => {
-  const [name, setName] = useState("");
-  const [phoneNum, setPhoneNum] = useState("");
-  const { addContact } = usePhonebookStore();
-
-  const handleAddContact = () => {
-    if (!name.trim() || !phoneNum.trim()) return;
-    addContact(name, phoneNum);
+  const [name, SetName] = useState("");
+  const [phoneNumber, SetPhoneNumber] = useState(0);
+  const dispatch = useDispatch();
+  const addContact = (event) => {
+    event.preventDefault();
+    dispatch({ type: "ADD_CONTACT", payload: { name, phoneNumber } });
   };
   return (
-    <Box display="flex" flexDirection="column" alignItems="center" gap={2}>
-      <TextField
-        id="name"
-        label="이름"
-        variant="outlined"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-      />
-      <TextField
-        id="phone-number"
-        label="전화번호"
-        variant="outlined"
-        value={phoneNum}
-        onChange={(e) => setPhoneNum(e.target.value)}
-      />
-      <Button variant="contained" size="large" onClick={handleAddContact}>
-        추가
-      </Button>
-    </Box>
+    <div>
+      <Form onSubmit={addContact}>
+        <Form.Group className="mb-3" controlId="formName">
+          <Form.Label>이름</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="이름을 입력해주세요"
+            onChange={(event) => SetName(event.target.value)}
+          />
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="formContact">
+          <Form.Label>전화번호</Form.Label>
+          <Form.Control
+            type="number"
+            placeholder="전화번호를 입력해주세요"
+            onChange={(event) => SetPhoneNumber(event.target.value)}
+          />
+        </Form.Group>
+
+        <Button variant="warning" className="btn_add" type="submit">
+          추가
+        </Button>
+      </Form>
+    </div>
   );
 };
 
